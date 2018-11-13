@@ -4,27 +4,16 @@ namespace Xunit.Prism.DelegateCommandTests
 {
     public class DelegateCommandTests
     {
-        ClassWithDelegateCommand sut;
-        bool delegateCommand1CanExecuteChangedFired = false;
-
-        public DelegateCommandTests()
-        {
-            sut = new ClassWithDelegateCommand();
-
-            sut.delegateCommand1.CanExecuteChanged += DelegateCommand1_CanExecuteChanged;
-        }
-
         [Fact]
         public void DelegateCommand1Test()
         {
+            bool delegateCommand1CanExecuteChangedFired = false;
+            var sut = new ClassWithDelegateCommand();
+            sut.delegateCommand1.CanExecuteChanged += (o, e) => { delegateCommand1CanExecuteChangedFired = true; };
+
             sut.RaiseCanExecuteChanged();
 
             Assert.True(delegateCommand1CanExecuteChangedFired);
-        }
-
-        private void DelegateCommand1_CanExecuteChanged(object sender, EventArgs e)
-        {
-            delegateCommand1CanExecuteChangedFired = true;
         }
     }
     // Generate more of the same test class to reproduce the issue by running 20 similar tests
