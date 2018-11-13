@@ -13,7 +13,7 @@ namespace Xunit.Prism.DelegateCommandTests
             delegateCommand1 = new DelegateCommand(() => { }, () => true);
         }
 
-        public void RaiseCanExecuteChanged(int commandNumber)
+        public void RaiseCanExecuteChanged()
         {
             SomeLongRunningCode();
 

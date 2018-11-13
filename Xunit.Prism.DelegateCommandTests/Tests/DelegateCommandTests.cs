@@ -17,7 +17,7 @@ namespace Xunit.Prism.DelegateCommandTests
         [Fact]
         public void DelegateCommand1Test()
         {
-            sut.RaiseCanExecuteChanged(1);
+            sut.RaiseCanExecuteChanged();
 
             Assert.True(delegateCommand1CanExecuteChangedFired);
         }
